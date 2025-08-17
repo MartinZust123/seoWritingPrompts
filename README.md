@@ -83,6 +83,14 @@ pnpm start
    - For Product Descriptions: Enter the product title, description, and keywords
 3. View the generated prompts and copy them to use with your preferred AI model
 
+## Prompt Templates
+
+This project includes a collection of prompt templates that have been tested and refined through experimentation. You can find these templates in the [docs/prompt-templates.md](docs/prompt-templates.md) file, which includes:
+
+- Multiple versions of blog post prompts, from basic to highly refined
+- Results from experiments comparing different AI models
+- Insights on how prompt modifications affect performance across different model types
+
 ## Technologies Used
 
 - [Next.js 15](https://nextjs.org/) - React framework
@@ -102,6 +110,7 @@ pnpm start
 ├── components/          # UI components
 │   ├── ui/              # shadcn/ui components
 │   └── theme-provider.tsx
+├── docs/                # Documentation and prompt templates
 ├── hooks/               # Custom hooks
 ├── lib/                 # Utility functions
 ├── public/              # Static assets
