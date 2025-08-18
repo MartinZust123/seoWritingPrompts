@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { ArrowLeft, FileText, Package, Copy, Check } from "lucide-react"
 
 type ContentType = "blog" | "product" | null
-type Step = "home" | "input1" | "input2" | "prompts"
+type Step = "home" | "input1" | "input2" | "input3" | "prompts"
 
 interface FormData {
   contentType: ContentType
@@ -43,7 +43,14 @@ export default function ContentWriter() {
   const handleInput2Submit = (value: string) => {
     if (formData.contentType === "product") {
       setFormData({ ...formData, description: value })
+      setStep("input3")
+    } else {
+      setFormData({ ...formData, keywords: value })
+      setStep("prompts")
     }
+  }
+
+  const handleInput3Submit = (value: string) => {
     setFormData({ ...formData, keywords: value })
     setStep("prompts")
   }
@@ -61,8 +68,14 @@ export default function ContentWriter() {
       setFormData({ contentType: null })
     } else if (step === "input2") {
       setStep("input1")
-    } else if (step === "prompts") {
+    } else if (step === "input3") {
       setStep("input2")
+    } else if (step === "prompts") {
+      if (formData.contentType === "product") {
+        setStep("input3")
+      } else {
+        setStep("input2")
+      }
     }
   }
 
@@ -135,6 +148,18 @@ export default function ContentWriter() {
             </CardHeader>
             <CardContent>
               <Input2Form contentType={formData.contentType} onSubmit={handleInput2Submit} />
+            </CardContent>
+          </Card>
+        )}
+
+        {step === "input3" && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Keywords</CardTitle>
+              <CardDescription>Enter keywords for your product description</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Input3Form onSubmit={handleInput3Submit} />
             </CardContent>
           </Card>
         )}
@@ -279,6 +304,31 @@ function Input2Form({ contentType, onSubmit }: { contentType: ContentType; onSub
           autoFocus
         />
       )}
+      <Button type="submit" className="w-full" disabled={!value.trim()}>
+        Continue
+      </Button>
+    </form>
+  )
+}
+
+function Input3Form({ onSubmit }: { onSubmit: (value: string) => void }) {
+  const [value, setValue] = useState("")
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (value.trim()) {
+      onSubmit(value.trim())
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <Input
+        placeholder="e.g., wireless headphones, bluetooth, noise cancelling"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        autoFocus
+      />
       <Button type="submit" className="w-full" disabled={!value.trim()}>
         Continue
       </Button>
