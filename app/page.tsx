@@ -178,9 +178,11 @@ export default function ContentWriter() {
 
 using the original description: ${formData.description}. 
 
-Return both the product title and the optimized description, formatted in a clear, readable text structure. Make it all in one, not seperately product description and title
+Return both the product title and the optimized description, formatted in a clear, readable text structure. Make it all in one, not seperately product description and title. The product title should be shorter than 60 characters.
 
-Optimize the description for the following keywords: ${formData.keywords}.`}
+The description should be 450-700 words long. Use simple, easy-to-understand language and write in short paragraphs (1-2 sentences each). Avoid complex sentence structures, jargon, and technical terms that are not commonly understood. Write in a natural, conversational style that flows well from beginning to end.
+
+Optimize the description for the following keywords: ${formData.keywords}. Also optimize for other similar keywords, including obvious ones, synonyms, and longer-tail keywords not explicitly provided.`}
                 />
                 
                 <PromptDisplay
@@ -188,8 +190,11 @@ Optimize the description for the following keywords: ${formData.keywords}.`}
                   prompt={`You are an expert SEO copywriter. 
 Create an SEO-optimized product description for the following product: ${formData.title}, 
 using the original description: ${formData.description}. 
-Return both the product title and the optimized description, formatted in a clear, readable text structure. Make it all in one, not seperately product description and title.
-Optimize the description for the following keywords: ${formData.keywords}.`}
+Return both the product title and the optimized description, formatted in a clear, readable text structure. Make it all in one, not seperately product description and title. The product title should be shorter than 60 characters.
+
+The description should be 450-700 words long. Use simple, easy-to-understand language and write in short paragraphs (1-2 sentences each). Avoid complex sentence structures, jargon, and technical terms that are not commonly understood. Write in a natural, conversational style that flows well from beginning to end.
+
+Optimize the description for the following keywords: ${formData.keywords}. Also optimize for other similar keywords, including obvious ones, synonyms, and longer-tail keywords not explicitly provided.`}
                 />
               </CardContent>
             </Card>

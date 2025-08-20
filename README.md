@@ -21,11 +21,13 @@ A Next.js application that generates SEO-optimized prompts for AI models to crea
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd seo-content-writer
    ```
@@ -136,3 +138,7 @@ To learn more about the technologies used in this project:
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Tests and Results
+
+You can find results of experiments and prompts in "tests and results" folder.
